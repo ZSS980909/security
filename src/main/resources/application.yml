@@ -1,0 +1,24 @@
+server:
+  port: 9898
+spring:
+  redis:
+    #数据库索引
+    database: 8
+    host: 192.168.1.13
+    port: 6379
+    password: 123456
+    #连接超时时间
+    timeout: 5000
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/TestResolving?characterEncoding=utf8&useCursorFetch=true&defaultFetchSize=500&allowMultiQueries=true&rewriteBatchedStatements=true&useSSL=false&serverTimezone=GMT%2B8
+    password: 980909
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis:
+  mapper-locations: classpath:/Mapper/*.xml
+jwt:
+  expiration: 7200   # token有效期
+  header: Authorization
+  prefix: zss98+
+  pointLogin: false

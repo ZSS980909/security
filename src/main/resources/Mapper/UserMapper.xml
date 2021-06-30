@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zss98.AuthorityResolving.Mapper.UserMapper">
+    <select id="selectUserByName" resultType="com.zss98.AuthorityResolving.Entity.User">
+        select
+            isDelete,
+            userName,
+            password,
+            phone,
+            email,
+            id,
+            (select roleName from sys_role where id in( select roleId from sys_user_role where userId = a.id )) as roleName
+        from
+            sys_user a
+        where
+            userName = #{userName}
+    </select>
+    <select id="getUserInfo" resultType="com.zss98.AuthorityResolving.Entity.UserData">
+        select
+            isDelete,
+            userName,
+            password,
+            phone,
+            email,
+            id,
+            (select roleName from sys_role where id in( select roleId from sys_user_role where userId = a.id )) as roleName
+        from
+            sys_user a
+        where
+            userName = #{user}
+    </select>
+</mapper>
